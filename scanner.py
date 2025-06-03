@@ -24,13 +24,16 @@ def scan_ports(target, scan_type="normal"):
         elif scan_type == "vuln":
             # Targeted vulnerability scan for Metasploitable 2
             nm.scan(target, arguments=(
-                '--script=ftp-vsftpd-backdoor,'
-                'smb-vuln-ms08-067,'
-                'smb-vuln-cve-2017-7494,'
-                'http-vuln-cve2010-0738,'
-                'mysql-vuln-cve2012-2122,'
-                'sshv1,'
-                'telnet-brute --script-timeout=15s -T4 --min-parallelism=100 --min-hostgroup=64'
+                '--script='
+                'ftp-anon,ftp-vsftpd-backdoor,ftp-proftpd-backdoor,'
+                'http-slowloris,http-sql-injection,http-dombased-xss,http-enum,http-config-backup,http-robots.txt,'
+                'mysql-vuln-cve2012-2122,mysql-empty-password,mysql-info,'
+                'smb-vuln-ms08-067,smb-vuln-ms17-010,smb-vuln-cve-2017-7494,smb-enum-shares,smb-enum-users,'
+                'sshv1,ssh2-enum-algos,'
+                'telnet-brute,telnet-encryption,'
+                'rpcinfo,rpc-grind,nfs-showmount,nfs-statfs,'
+                'vulners,vulscan '
+                '--script-timeout=30s -T4 --min-parallelism=100 --min-hostgroup=64'
             ))
         else:
             nm.scan(target, '1-1024', arguments='-T4')  # Normal scan
