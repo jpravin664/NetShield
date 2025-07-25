@@ -10,7 +10,7 @@ video#bgvid {
     top: 50%;
     left: 60%;
     width: 90%;
-    height: 120%;
+    height: 120%; 
     z-index: -1;
     transform: translate(-50%, -50%);
     background-size: cover;
